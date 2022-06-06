@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+.image img {
+  margin-top: 10px;
+  height: 140px;
+}
+.title{
+  height: 140px;
+}
+.rating_reviews {
+  display: flex;
+}
+.rating_reviews p {
+  font-size: 12px;
+  margin-top: 8px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+.rating_reviews p:nth-child(2) {
+  color: red;
+}
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  float: left;
+}
+
+.price {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.description p {
+  font-size: 11px;
+}
