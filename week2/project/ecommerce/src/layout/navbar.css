@@ -1,0 +1,9 @@
+.navbar-light .navbar-nav .nav-link.active {
+    color: red !important;
+    font-weight: bolder !important;
+}
+
+.selected {
+    color: '#fff';
+    background: '#7600dc';
+  }
