@@ -1,14 +1,14 @@
-import ProductCard from '../components/productCard';
-import './productPage.css';
+import ProductCard from '../components/ProductCard';
+import './ProductPage.css';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {SpinnerCircularFixed} from 'spinners-react';
-import { Link } from 'react-router-dom';
-import DetailPage from './DetailPage';
+import ErrorHandling from '../components/ErrorHandling';
 
-function ProductSection({category}) {
+function ProductPage({category, setCategory}) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -17,22 +17,26 @@ function ProductSection({category}) {
           const prod = await axios(
             `https://fakestoreapi.com/products/category/${category}`,
           );
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 1000);
+          // setTimeout(() => {
+          // }, 1000);
+          setIsLoading(false);
           setProducts(prod.data);
         } else {
           const prod = await axios(`https://fakestoreapi.com/products`);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 1000);
+          // setTimeout(() => {
+          // }, 1000);
+          setIsLoading(false);
           setProducts(prod.data);
         }
       } catch (err) {
-        console.log(err);
+        setError('Oops, something went wrong!');
+        setIsLoading(false);
       }
     })();
   }, [category]);
+
+  if (error) return <ErrorHandling message={error} />;
+
 
   return (
     <section className="section-products">
@@ -55,17 +59,18 @@ function ProductSection({category}) {
           <div className="container">
             <div className="row">
               {products.map(product => (
-                // <Link to={`/${product.id}`}>
-                  <ProductCard product={product} key={product.id} />
-                // </Link>
+                <ProductCard
+                  setCategory={setCategory}
+                  product={product}
+                  key={product.id}
+                />
               ))}
             </div>
           </div>
         </>
       )}
     </section>
-
   );
 }
 
-export default ProductSection;
+export default ProductPage;
