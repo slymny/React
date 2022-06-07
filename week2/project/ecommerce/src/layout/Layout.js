@@ -1,4 +1,4 @@
-import Navbar from './navbar';
+import Navbar from './Navbar';
 
 export default function Layout(props) {
   const {allCategories, setAllCategories, category, setCategory} = props;
