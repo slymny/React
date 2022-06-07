@@ -51,3 +51,9 @@
 .description p {
   font-size: 11px;
 }
+
+.title-link:hover {
+  transform: scale(1.01);
+  transition: all .1s ease-in;
+  text-decoration: none;
+}
